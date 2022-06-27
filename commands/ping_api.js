@@ -14,9 +14,6 @@ module.exports = {
 
         const {
             statusCode,
-            headers,
-            trailers,
-            body
         } = await request(`https://eu.api.riotgames.com/val/status/v1/platform-data?api_key=${valorantToken}`);
 
         if (statusCode != 200) {

@@ -3,8 +3,9 @@ const path = require('node:path');
 const { Client, Collection, Intents } = require('discord.js');
 const { token } = require('./config.json');
 
-
 const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
+
+const { Users } = require('./database.js');
 
 client.commands = new Collection();
 const commandPath = path.join(__dirname, 'commands');
@@ -18,7 +19,9 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    console.log('Ready!');
+    Users.sync();
+
+    console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('interactionCreate', async interaction => {
