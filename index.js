@@ -1,3 +1,5 @@
+require('./deploy-commands'); // register the commands first !
+
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Intents } = require('discord.js');
